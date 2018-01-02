@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class SingletonSynchronize {
 
-    private final String TAG = SingletonClassic.class.getSimpleName();
+    private final String TAG = SingletonSynchronize.class.getSimpleName();
     private static SingletonSynchronize instance;
 
     private SingletonSynchronize() {
