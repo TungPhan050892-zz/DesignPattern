@@ -1,0 +1,38 @@
+package com.tungphan.designpatternsample.behavioral.interpreter.numberalconverter;
+
+/**
+ * Created by phant on 02-02-18.
+ */
+
+public abstract class Expression {
+
+    public void interpret(Context context) {
+        if (context.getInput().length() == 0) {
+            return;
+        }
+        if (context.getInput().startsWith(nine())) {
+            context.setOutput(context.getOutput() + (9 * multiplier()));
+        } else if (context.getInput().startsWith(four())) {
+            context.setOutput(context.getOutput() + (4 * multiplier()));
+            context.setInput(context.getInput().substring(2));
+        } else if (context.getInput().startsWith(five())) {
+            context.setOutput(context.getOutput() + (5 * multiplier()));
+            context.setInput(context.getInput().substring(1));
+        }
+
+        while (context.getInput().startsWith(one())) {
+            context.setOutput(context.getOutput() + (1 * multiplier()));
+            context.setInput(context.getInput().substring(1));
+        }
+    }
+
+    public abstract String one();
+
+    public abstract String four();
+
+    public abstract String five();
+
+    public abstract String nine();
+
+    public abstract int multiplier();
+}
